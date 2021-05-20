@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-    def index
-    end
 
     def show
         find_user
@@ -11,11 +9,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)
-        if @user.save
-            redirect_to :show
+        @user = User.create(user_params)
+        if @user.valid?
+            @user.save
+            redirect_to @user
         else
-            render :new
+            redirect_to :new
         end
     end
 
@@ -32,12 +31,12 @@ class UsersController < ApplicationController
     end
 
     private
-    
+
     def find_user
         @user = find_by(id: params[:id])
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username, :password, :email)
+        params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end
 end

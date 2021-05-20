@@ -4,6 +4,12 @@ class SessionsController < ApplicationController
 
     def create
         # find a user in the database and create a session usuing their user.id
+        @user = User.find_by(id: params[:id])
+        return head(:forbidden) unless @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+    end
+    
+
     end
 
     def login

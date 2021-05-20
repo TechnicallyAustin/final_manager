@@ -1,0 +1,32 @@
+<h1> Sign up for the Final Manager </h1>
+<h3> Get your life back on track! </h3>
+<%=form_for @user do |t|%>
+<div>
+<%=t.label :first_name%>: 
+<%=t.text_field :first_name, placeholder: "First Name"%><br>
+</div>
+
+<div>
+<%=t.label :last_name%>: 
+<%=t.text_field :last_name, placeholder: "Last Name"%><br>
+</div>
+
+<div>
+<%=t.label :userame%>: 
+<%=t.text_field :username, placeholder: "Username"%><br>
+</div>
+
+<div>
+<%=t.label :email%>: 
+<%=t.text_field :email, placeholder: "Email"%><br>
+</div>
+
+<div>
+<%=t.label :password%>: 
+<%=t.password_field :password, placeholder: "Password"%><br>
+
+<%=t.label :password_confirmation%>
+<%=t.password_field :password_confirmation, placeholder: "Confirm Password"%>
+</div>
+<%=t.submit "Create Account"%>
+<%end%>

@@ -1,3 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users do 
+    resources :taskklist, only:[:new, :create, :index, :show, :edit, :update]
+  end
+
+  resources :tasks, only: [:new, :create, :index]
+
+  resources :groups, only: [:show, :index, :new, :create]
+
+  # Session Routes
+  get "/login", to: "sessions#new"
+  post "/login", to: "session#create"
+  get "/logout", to: "sessions#logout"
+  post "logout", to: "sessions#destroy"
+  # User signup routes
+  get "/signup", to: "user#new"
+  post "signup", to: "user#create"
 end

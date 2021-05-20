@@ -8,9 +8,6 @@ class SessionsController < ApplicationController
         return head(:forbidden) unless @user.authenticate(params[:password])
         session[:user_id] = @user.id
     end
-    
-
-    end
 
     def login
         # set the session user_id to the current logged in user's id

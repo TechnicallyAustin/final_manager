@@ -13,7 +13,7 @@ end
 def password=(new_password)
     # this setter method creates a password usuing Bcyrpt and creates a new secure password with the key to that hash being the original password.
     @password = Password.create(new_password)
-    self.password_hash = @password
+    self.password_digest = @password
 end
 
 end

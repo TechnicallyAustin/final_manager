@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     def create
         byebug
-        @user = User.create()
+        @user = User.create(user_params)
         @user.email.downcase!
         
         if @user.save
@@ -43,6 +43,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :lname, :username, :password, :password_confirmation)
     end
 end

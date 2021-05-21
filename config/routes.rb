@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  devise_for :users
   resources :users do 
     resources :taskklist, only:[:new, :create, :index, :show, :edit, :update]
   end

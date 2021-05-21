@@ -3,18 +3,15 @@
 <%=form_for @user do |t|%>
 <div>
 <%=t.label :first_name%>: 
-<%=t.text_field :first_name, placeholder: "First Name"%><br>
+<%=t.text_field :name, placeholder: "First Name"%><br>
 </div>
 
 <div>
 <%=t.label :last_name%>: 
-<%=t.text_field :last_name, placeholder: "Last Name"%><br>
+<%=t.text_field :lname, placeholder: "Last Name"%><br>
 </div>
 
-<div>
-<%=t.label :username%>: 
-<%=t.text_field :username, placeholder: "Username"%><br>
-</div>
+
 
 <div>
 <%=t.label :email%>: 

@@ -9,13 +9,19 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        if @user.valid?
-            @user.save
-            redirect_to @user
+        byebug
+        @user = User.create()
+        @user.email.downcase!
+        
+        if @user.save
+          flash[:notice] = "Successfully created Account!"
+          redirect_to root_path
         else
-            redirect_to :new
+          # If user fails model validation - probably a bad password or duplicate email:
+          flash.now.alert = "Error creating account. Please check your details and try again."
+          render :new
         end
+      
     end
 
     def edit

@@ -16,17 +16,13 @@ Rails.application.routes.draw do
   #get 'sessions/welcome'
 
 # Redirects 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+
+
   # Home Page
   get '/', to: "sessions#welcome"
   root to: 'users#new'
 
 	
-	# create (post) action for when sign up form is submitted:
-	post 'users' => 'users#create'
 
 
 

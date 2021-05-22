@@ -1,13 +1,14 @@
 
 class SessionsController < ApplicationController
+    before_action :authenticate_user!, execpt: [:welcome, :new, :destroy]
     def new
     end
 
     def create
-        #byebug
+        byebug
         # find a user in the database and create a session usuing their user.id
-        @user = User.find_by(username: params[:username])
-        return head(:forbidden) unless @user.authenticate(params[:password])
+        @user = User.find_by(email: params[:email])
+
         session[:user_id] = @user.id
         redirect_to @user 
     end

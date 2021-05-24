@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
 
     def show
-        find_user
+        current_user
     end
 
     def new
@@ -24,15 +25,11 @@ class UsersController < ApplicationController
     end
 
     def edit
-        find_user
+        current_user
     end
 
     def update
         # look into update syntax
-    end
-
-    def delete
-        find_user.delete
     end
 
     private

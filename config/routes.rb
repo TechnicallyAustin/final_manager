@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
 
   # Task Routes
-    resources :tasks, only: [:new, :create, :index]
+    resources :tasks, only: [:new, :create, :index, :show]
 
   # Group Routes
     resources :groups, only: [:show, :index, :new, :create]

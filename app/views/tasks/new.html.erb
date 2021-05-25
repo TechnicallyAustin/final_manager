@@ -1,0 +1,24 @@
+<h1> Create a new Task </h1>
+<%=form_for @task do |t|%>
+
+    <%=t.label :name%>
+    <%=t.string :name%>
+
+    <%=t.label :due_date%>
+    <%=t.string :due_date%>
+
+    <%=t.label :completed%>
+    <%=t.checkbox :completed%>
+
+        <%=form_for @group do |g| %>
+        <%=g.label :name %>
+        <%=g.text_field :name%>
+
+        <%=g.label :description%>
+        <%=g.text_field :description%>
+
+        <%g.submit%>
+        <%end%>
+<%=t.submit%>
+<%end%>
+

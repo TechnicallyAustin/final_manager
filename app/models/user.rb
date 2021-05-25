@@ -10,8 +10,10 @@ validates :email, presence: true, uniqueness: true
 validates :password, presence: true 
 validates :password_confirmation, presence: true 
 
-
 # Associations
+has_many :tasklists
+has_many :tasks, through: :tasklists
+has_many :groups, through: :tasks
 
 # Methods
 

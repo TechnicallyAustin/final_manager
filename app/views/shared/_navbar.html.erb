@@ -8,7 +8,7 @@
         <!-- Left aligns the Nav bar -->
         <ul class="navbar-nav ml-auto">
 
-       <% if user_signed_in? %>
+       <%if user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link" href="#">Home</a>
           </li>
@@ -33,7 +33,7 @@
           <li class="nav-item">
             <%=link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
           </li>
-          <%end%>
+        <%end%>
         </ul>
       </div>
     </div>

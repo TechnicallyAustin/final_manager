@@ -1,24 +1,25 @@
 <h1> Create a new Task </h1>
 <%=form_for @task do |t|%>
+<%= t.hidden_field :user_id, value: current_user.id %>
 
-    <%=t.label :name%>
-    <%=t.string :name%>
+    <%= t.label :name%>
+    <%= t.text_field :name%>
 
-    <%=t.label :due_date%>
-    <%=t.string :due_date%>
+    <%= t.label :due_date%>
+    <%= t.text_field :due_date%>
 
-    <%=t.label :completed%>
-    <%=t.checkbox :completed%>
+    <%= t.label :completed%>
 
-        <%=form_for @group do |g| %>
-        <%=g.label :name %>
-        <%=g.text_field :name%>
+    <%= t.check_box :completed%><br /><br />
 
-        <%=g.label :description%>
-        <%=g.text_field :description%>
+        <%=t.fields_for :groups do |group_form|%>
+            <%=group_form.label :group %>
+            <%=group_form.text_field :name%>
 
-        <%g.submit%>
+            <%=group_form.label :description%>
+            <%=group_form.text_field :description%>
         <%end%>
-<%=t.submit%>
+
+    <%=t.submit "Create Task"%>
 <%end%>
 

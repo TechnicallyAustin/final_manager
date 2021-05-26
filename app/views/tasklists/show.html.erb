@@ -1,1 +1,5 @@
-<h1> Tasklist show Page </h1>
+<h2><%=@tasklist.title%></h2>
+<p><%=@tasklist.description%></p><br />
+
+
+<%=button_to "Add Task", new_task_path(@task)%>

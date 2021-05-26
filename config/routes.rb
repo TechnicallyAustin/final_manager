@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   # Task Routes
     resources :tasks, only: [:new, :create, :index, :show]
-    post "tasks/new", to: 'tasks#new'
+    get 'tasks/new', to: 'tasks#new'
+    post "tasks/new", to: 'tasks#create'
   # Group Routes
     resources :groups, only: [:show, :index, :new, :create]
 

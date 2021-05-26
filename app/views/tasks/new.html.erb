@@ -12,7 +12,7 @@
 
     <%= t.check_box :completed%><br /><br />
 
-        <%=t.fields_for :groups do |group_form|%>
+        <%=t.fields_for :group_attributes do |group_form|%>
             <%=group_form.label :group %>
             <%=group_form.text_field :name%>
 

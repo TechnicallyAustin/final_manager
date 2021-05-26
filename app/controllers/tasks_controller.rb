@@ -13,7 +13,9 @@ class TasksController < ApplicationController
     end
 
     def create
-        # @task.save! = Validation failed: Tasklist must exist, Group must exist, Due date can't be blank
+        # @tasklists.tasks << @task
+        # adds the newly created tasks to an existing tasklist
+        # could be an add method in the tasklist index. Using check boxes that toggles the add method.
         @task = Task.new(task_params)
         if @task.valid?
             @task.save

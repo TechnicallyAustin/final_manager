@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+    # before action authenticate user
     def index
     end
 
@@ -19,6 +20,7 @@ class TasksController < ApplicationController
     end
 
     def create
+        # @task.save! = Validation failed: Tasklist must exist, Group must exist, Due date can't be blank
         byebug
         @task = Task.new(task_params)
     end
@@ -37,7 +39,7 @@ class TasksController < ApplicationController
 
     # Needs to take Nested Group Param.
     def task_params
-        params.require(:task).permit(:name, :due_date, :completed, :groups, :user_id, groups_attributes: [:name, :description])
+        params.require(:task).permit(:name, :due_date, :completed, :user_id, groups_attributes: [:name, :description])
     end
 
 end

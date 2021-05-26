@@ -4,15 +4,21 @@ Rails.application.routes.draw do
 
   # User Routes
     resources :users, only: [:index, :show, :edit, :update] do 
-      resources :tasklists
+      resources :tasklists, only: [:index]
     end
+    #get 'profile', to: 'users#show'
+
+
 
   # Task Routes
     resources :tasks, only: [:new, :create, :index, :show]
-
+    post "tasks/new", to: 'tasks#new'
   # Group Routes
     resources :groups, only: [:show, :index, :new, :create]
 
+  # Tasklists Routes
+    resources :tasklists, only: [:new, :show, :create, :edit, :update]
+    post 'tasklists/new', to: 'tasklists#new'
   # Root Page
     root to: 'sessions#welcome'
 

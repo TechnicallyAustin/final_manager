@@ -6,9 +6,10 @@ class Tasklist < ApplicationRecord
 # Validations
 
 # Methods
-    def add_task(task)
+    def add_task(task_name)
         # Adds a task to a selected task list
-        current_tasklist.tasks << task
+        @task = Task.find_or_create_by(task_name)
+        self.tasks << @task
     end
 
 end

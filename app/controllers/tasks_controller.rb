@@ -10,6 +10,7 @@ class TasksController < ApplicationController
     def new
         @task = Task.new
         @task.group = Group.new
+        byebug
     end
 
     def create
@@ -42,4 +43,6 @@ class TasksController < ApplicationController
         params.require(:task).permit(:name, :due_date, :completed, :user_id, group_attributes: [:name, :description])
     end
 
+
+    
 end

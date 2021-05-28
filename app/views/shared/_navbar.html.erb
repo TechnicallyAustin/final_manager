@@ -21,7 +21,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="false">Logout</a>
+            <%=link_to "logout", destroy_user_session_path, method: :delete, class:'nav-link'%> 
           </li>
 
         <%else %>

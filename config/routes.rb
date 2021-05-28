@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     end
     #get 'profile', to: 'users#show'
 
-
-
   # Task Routes
     resources :tasks, only: [:new, :create, :index, :show]
     get 'tasks/new', to: 'tasks#new'

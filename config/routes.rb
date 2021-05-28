@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     devise_for :users
 
   # User Routes
+  # user does not need to have tracklists nested, I can just authenticate the routes
+
     resources :users, only: [:index, :show, :edit, :update] do 
       resources :tasklists, only: [:index]
     end
@@ -18,8 +20,10 @@ Rails.application.routes.draw do
     resources :groups, only: [:show, :index, :new, :create]
 
   # Tasklists Routes
+  ### Considering nesding tasks within tasklists for easier navigation.
     resources :tasklists, only: [:new, :show, :create, :edit, :update]
     post 'tasklists/new', to: 'tasklists#new'
+    post 'tasklists/:id/edit', to: 'tasklists#edit'
   # Root Page
     root to: 'sessions#welcome'
 

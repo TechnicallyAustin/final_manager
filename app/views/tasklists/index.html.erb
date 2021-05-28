@@ -2,5 +2,12 @@
 
 <%=button_to "Create a New Tasklist", new_tasklist_path(@tasklist)%>
 
+<%=current_user.tasklists.each do |tasklist|%>
+<ul>
+<h3><%=link_to "#{tasklist.title}", tasklist_path(tasklist)%></h3>
+<p><%=tasklist.description%></p>
+</li>
+</ul>
+<%end%>
 Display divs with links for each Tasklist the current user has.
 

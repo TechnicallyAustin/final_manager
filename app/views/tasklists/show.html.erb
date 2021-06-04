@@ -1,6 +1,6 @@
 <h2><%=@tasklist.title%></h2>
 <p><%=@tasklist.description%></p><br />
 
-<%byebug%>
+
 <%=button_to "Edit Tasklist", edit_tasklist_path(@tasklist)%>
-<%=button_to "Add Task", new_task_path(@task)%>
+<%=button_to "Add Task", new_tasklist_task_path(@tasklist.id, @task)%>

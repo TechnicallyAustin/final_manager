@@ -9,8 +9,9 @@ class TasksController < ApplicationController
 
     def new
         @task = Task.new
+        @tasklist = Tasklist.find_by(id: params[:id])
         @task.group = Group.new
-        byebug
+        #byebug
     end
 
     def create
@@ -18,6 +19,7 @@ class TasksController < ApplicationController
         # adds the newly created tasks to an existing tasklist
         # could be an add method in the tasklist index. Using check boxes that toggles the add method.
         @task = Task.new(task_params)
+        byebug
         if @task.valid?
             @task.save
             redirect_to task_path(@task)
@@ -44,5 +46,5 @@ class TasksController < ApplicationController
     end
 
 
-    
+
 end

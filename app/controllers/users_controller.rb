@@ -38,7 +38,12 @@ class UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
+    def current_tasklist
+        @tasklist = current_user.Tasklist.find_by(id: params[:id])
+    end
+
     def user_params
         params.require(:user).permit(:name, :lname, :username, :password, :password_confirmation)
     end
+
 end

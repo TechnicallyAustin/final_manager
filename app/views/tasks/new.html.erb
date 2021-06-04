@@ -2,7 +2,6 @@
 <%=form_for @task do |t|%>
 <%= t.hidden_field :user_id, value: current_user.id %>
 
-
     <%= t.label :name%>
     <%= t.text_field :name%>
 

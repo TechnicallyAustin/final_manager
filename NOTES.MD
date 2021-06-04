@@ -10,3 +10,8 @@ USER
 
     TASKLIST/1/NEW
 
+Google Oauth client id
+155870277355-9v0mgjsjc9v6sbcpb6b2r4f2n9s8the6.apps.googleusercontent.com
+
+Google client secret
+ElU47VOJz2T6tO0Ly4gyZfJu

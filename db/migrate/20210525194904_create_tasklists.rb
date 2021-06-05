@@ -5,6 +5,7 @@ class CreateTasklists < ActiveRecord::Migration[6.0]
       t.string :description
       t.belongs_to :user
       
+      
 
       t.timestamps
     end

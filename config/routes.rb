@@ -25,8 +25,8 @@ Rails.application.routes.draw do
 
     get 'tasklists/new', to: 'tasklists#new'
     post 'tasklists/:id/edit', to: 'tasklists#edit'
-    get "tasklists/#{:id}/tasks/new", to: 'tasks#new'
-    post "taskslists/#{:id}/tasks/new", to: 'tassks#create'
+    get "tasklists/:tasklist_id/tasks/new", to: 'tasks#new'
+
   # Root Page
     root to: 'sessions#welcome'
 
@@ -44,4 +44,3 @@ Rails.application.routes.draw do
 
 
 end
-#

@@ -2,5 +2,6 @@
 <p><%=@tasklist.description%></p><br />
 
 
-<%=button_to "Edit Tasklist", edit_tasklist_path(@tasklist)%>
-<%=button_to "Add Task", new_tasklist_task_path(@tasklist.id, @task)%>
+<%=link_to "Edit Tasklist", edit_tasklist_path(@tasklist)%><br />
+<%=link_to "New Task", new_tasklist_task_path(@tasklist.id)%>
+

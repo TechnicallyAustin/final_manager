@@ -1,6 +1,9 @@
 <h1> Create a new Task </h1>
-<%=form_for @task do |t|%>
+<%=form_for @task, action: '/taskslists/:id/'  do |t|%>
 <%= t.hidden_field :user_id, value: current_user.id %>
+
+    <%= t.label :tasklist%>
+    <%=t.collection_select :tasklist_id, Tasklist.order(:title), :id, :title, include_blank: true%>
 
     <%= t.label :name%>
     <%= t.text_field :name%>
@@ -8,9 +11,12 @@
     <%= t.label :due_date%>
     <%= t.text_field :due_date%>
 
+
     <%= t.label :completed%>
 
     <%= t.check_box :completed%><br /><br />
+
+
 
         <%=t.fields_for :group_attributes do |group_form|%>
             <%=group_form.label :group %>

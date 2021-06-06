@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     #get 'tasks/new', to: 'tasks#new'
     #post "tasks/new", to: 'tasks#create'
   # Group Routes
-    resources :groups, only: [:show, :index, :new, :create]
+    resources :groups, only: [:show, :index, :edit, :update]
 
   # Tasklists Routes
   ### Considering nesding tasks within tasklists for easier navigation.
@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
     get 'tasklists/new', to: 'tasklists#new'
     post 'tasklists/:id/edit', to: 'tasklists#edit'
-    get "tasklists/:tasklist_id/tasks/new", to: 'tasks#new'
+    get 'tasklists/:tasklist_id/tasks/new', to: 'tasks#new'
+    #post 'tasklists/:tasklist_id/tasks/new', to: "tasks#create"
+    get 'tasklists/:tasklist_id/tasks/:task_id', to: 'tasks#show'
+    post '/tasks', to: "tasks#create"
+
 
   # Root Page
     root to: 'sessions#welcome'

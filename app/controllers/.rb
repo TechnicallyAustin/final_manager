@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
     # Needs to take Nested Group Param.
     def task_params
-        params.require(:task).permit(:name, :due_date, :completed, :user_id, group_attributes: [:name, :description])
+        params.require(:task).permit(:name, :due_date, :completed, :user_id, :tasklist_id, group_attributes: [:name, :description])
     end
 
 

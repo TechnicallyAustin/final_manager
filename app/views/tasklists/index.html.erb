@@ -1,6 +1,6 @@
 <h1> Tasklist Hub </h1>
 
-<%=button_to "Create a New Tasklist", new_tasklist_path(@tasklist)%>
+<%=link_to "Create a New Tasklist", new_tasklist_path(@tasklist)%><br />
 
 <%=current_user.tasklists.each do |tasklist|%>
 <ul>

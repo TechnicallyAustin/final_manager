@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(version: 2021_05_25_194904) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.integer "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_groups_on_task_id"
   end
 
   create_table "tasklists", force: :cascade do |t|

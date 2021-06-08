@@ -35,12 +35,14 @@ Rails.application.routes.draw do
     root to: 'sessions#welcome'
 
 
-	devise_scope :user do
+	devise_scope :users do
     get 'login', to: 'devise/sessions#new'
     get 'sign_up', to: 'devise/registrations#new'
     delete '/logout', to: 'sessions#destroy'
   end
   
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
 
 
 

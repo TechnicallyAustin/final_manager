@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
     # before action authenticate user
     def index
+        @tasks = Task.all
+
     end
     def show
         current_task
@@ -19,14 +21,14 @@ class TasksController < ApplicationController
         # could be an add method in the tasklist index. Using check boxes that toggles the add method.
         @task = Task.new(task_params)
         @task.group = Group.find_or_create_by(task_params[:group_attributes])
-        byebug
-        @tasklist_id = task_params[:tasklist_id].to_i
-        byebug
-        @task.group.tasklist = Tasklist.find_by(id: @tasklist_id)
-        byebug
+        #byebug
+        #@tasklist_id = task_params[:tasklist_id].to_i
+        #byebug
+        #@task.group.tasklist = Tasklist.find_by(id: @tasklist_id)
+        #byebug
         if @task.valid?
             @task.save
-            redirect_to task_path(@task)
+            redirect_to tasks_path(@task)
         else
             render :new
         end

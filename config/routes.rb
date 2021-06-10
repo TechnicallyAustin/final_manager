@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Devise Authentication Routes
-    devise_for :users
+    devise_for :user, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # User Routes
   # user does not need to have tracklists nested, I can just authenticate the routes
@@ -35,11 +35,11 @@ Rails.application.routes.draw do
     root to: 'sessions#welcome'
 
 
-	devise_scope :users do
+	devise_scope :user do
     get 'login', to: 'devise/sessions#new'
     get 'sign_up', to: 'devise/registrations#new'
     delete '/logout', to: 'sessions#destroy'
-    #controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
 
 
   end

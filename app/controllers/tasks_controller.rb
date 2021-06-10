@@ -2,6 +2,7 @@ class TasksController < ApplicationController
     # before action authenticate user
     def index
         @tasks = Task.all
+        #byebug
 
     end
     def show

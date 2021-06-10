@@ -3,8 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  devise :omniauthable, omniauth_providers: [:google_oauth2]
-
+  devise :omniauthable, omniauth_providers: %i[google]
   # Validaitons
     validates :name, presence: true 
     validates :lname, presence: true 
@@ -22,6 +21,12 @@ class User < ApplicationRecord
     #if last name ends in an s add ' after.
     # else add the ' before s
     p "#{self.name} #{self.lname}"
+  end
+
+
+  def self.from_google(email:, full_name:, uid:, avatar_url:)
+    #return nil unless email =~ /@mybusiness.com\z/
+    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
   end
 
 

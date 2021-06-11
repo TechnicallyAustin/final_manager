@@ -3,15 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  devise :omniauthable, omniauth_providers: %i[google]
-  # Validaitons
+  # allows devise to register the user as an omniauthable model.
+  devise :omniauthable, omniauth_providers: [:google_oauth2]
+# Validaitons
     validates :name, presence: true 
     validates :lname, presence: true 
     validates :email, presence: true, uniqueness: true 
     validates :password, presence: true 
     validates :password_confirmation, presence: true 
-
-  # Associations
+# Associations
   has_many :tasklists
   has_many :tasks, through: :tasklists
   has_many :groups, through: :tasks
@@ -23,11 +23,15 @@ class User < ApplicationRecord
     p "#{self.name} #{self.lname}"
   end
 
-
-  def self.from_google(email:, full_name:, uid:, avatar_url:)
-    #return nil unless email =~ /@mybusiness.com\z/
-    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
+  def self.from_omniauth(auth)
+    # allows the creation of a user from the hash provided from Google.
+    # creates a user or updates a User based on the provider and UID
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.token = auth.credentials.token
+      user.expires = auth.credentials.expires
+      user.expires_at = auth.credentials.expires_at
+      user.refresh_token = auth.credentials.refresh_token
+    end
   end
-
 
 end

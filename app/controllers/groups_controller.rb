@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+
     def index
         @groups = current_user.groups
     end
@@ -27,7 +28,6 @@ class GroupsController < ApplicationController
         else
             render 'task\new'
         end
-
     end
 
     private

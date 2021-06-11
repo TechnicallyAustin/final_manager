@@ -27,6 +27,9 @@ gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-google-oauth2', '~> 1.0'
 # AR Session store
 gem 'activerecord-session_store'
+# CSRF protection for Omniauth 
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

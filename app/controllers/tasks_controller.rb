@@ -34,9 +34,21 @@ class TasksController < ApplicationController
             render :new
         end
     end
+
     def edit
+        current_task
     end
     def update
+        current_task
+        @task.update(task_params)
+        byebyg
+        if @task.valid?
+            @task.save
+            redirect_to task_path(@task)
+        else
+            render :edit
+        end
+
     end
     private
     def current_task

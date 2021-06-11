@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     #post 'tasklists/:tasklist_id/tasks/new', to: "tasks#create"
     get 'tasklists/:tasklist_id/tasks/:task_id', to: 'tasks#show'
     post '/tasks', to: "tasks#create"
+    post 'tasklists/:tasklist_id/:tasks/:task_id/edit', to: 'tasks#create'
 
 
   # Root Page

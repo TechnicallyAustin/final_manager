@@ -1,5 +1,5 @@
 <h1> Create a new Task </h1>
-<%=form_for @task, action: '/tasklists/:id/'  do |t|%>
+<%=form_for @task, action: '/taskslists/:id/'  do |t|%>
 <%= t.hidden_field :user_id, value: current_user.id %>
 
     <%= t.label :tasklist%>

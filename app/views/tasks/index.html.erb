@@ -8,13 +8,14 @@
       <th scope="col">Completed</th>
       <th scope="col">Group</th>
       <th scope="col">Tasklist</th>
+      <th scope="col">Edit</th>
     </tr>
   </thead>
 
   <tbody>
 
     <tr>
-        <%counter = 0%>
+        <%counter = 1%>
         <%@tasks.each do |task|%>
         <tr>
             <th scope="row"><%=counter%></th>
@@ -23,6 +24,7 @@
             <td><%=task.completed%></td>
             <td><%=link_to "#{task.group.name}", group_path(task.group)%></td>
             <td><%=link_to "#{task.tasklist.title}", tasklist_path(task.tasklist)%></td>
+            <td><%=link_to "Edit", edit_tasklist_task_path(task.tasklist_id, task)%>
         </tr>
             <%=counter += 1%>
         

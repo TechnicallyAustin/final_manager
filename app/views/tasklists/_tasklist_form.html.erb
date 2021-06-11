@@ -1,0 +1,12 @@
+<h1> New Tasklist Form </h1>
+<%=form_for @tasklist do |t|%>
+<%= t.hidden_field :user_id, value: current_user.id %>
+
+<%=t.label :title%>
+<%=t.text_field :title%>
+
+<%=t.label :description%>
+<%=t.text_area :description%>
+
+<%=t.submit "Create Tasklist"%>
+<%end%>

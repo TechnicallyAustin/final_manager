@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
     private
 
     def group_finder
-        @group = Group.find_by(name: params[:task][:group_attributes][:name])
+        @group = Group.find_by(id: params[:id])
     end
 
     def group_params

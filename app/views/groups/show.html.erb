@@ -1,0 +1,10 @@
+<h1><%=@group.name%></h1>
+<p><%=@group.description%></p>
+
+<h2><%="Tasks in #{@group.name}"%></h2>  
+
+<%=@group.tasks.each do |task|%>
+<h3><%=link_to "#{task.name}", tasklist_task_path(task)%></h3>
+<%end%>
+
+

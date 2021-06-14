@@ -18,12 +18,12 @@ Rails.application.routes.draw do
 
   # Redirects
     # Tasklists
-    get 'tasklists/new', to: 'tasklists#new' # New Tasklist
-    get 'tasklists/:tasklist_id/tasks/new', to: 'tasks#new' # New Task Within a Tasklist
-    get 'tasklists/:tasklist_id/tasks/:task_id', to: 'tasks#show' # Single Task on a Tasklist
-    post 'tasklists/:id/edit', to: 'tasklists#edit' # Edit a Single Tasklist
+    #get 'tasklists/new', to: 'tasklists#new' # New Tasklist
+    #get 'tasklists/:tasklist_id/tasks/new', to: 'tasks#new' # New Task Within a Tasklist
+    #get 'tasklists/:tasklist_id/tasks/:task_id', to: 'tasks#show' # Single Task on a Tasklist
+    #post 'tasklists/:id/edit', to: 'tasklists#edit' # Edit a Single Tasklist
     patch 'tasklists/:tasklist_id/tasks/:task_id/edit', to: 'tasks#update' # renders the nested tasklist taks edit form
-    get 'tasklists/:tasklist_id/tasks/:task_id/edit', to: 'tasks#edit' # posts the tasklist's task and processes the updates
+    #get 'tasklists/:tasklist_id/tasks/:task_id/edit', to: 'tasks#edit' # posts the tasklist's task and processes the updates
   
     # Tasks
       post '/tasks', to: "tasks#create"

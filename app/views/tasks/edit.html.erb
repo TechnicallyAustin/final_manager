@@ -1,7 +1,9 @@
 <h1><%="Edit your Task, #{@task.name}"%> </h1>
 
-<h1> Create a new Task </h1>
-<%=form_for @task, url: edit_tasklist_task_path do |t|%>
+<h2> Make sure you enter a date for when you complete your task! </h2>
+<br />
+<br />
+<%=form_for @task, url: edit_tasklist_task_path, html: {method: :patch } do |t|%>
 <%= t.hidden_field :user_id, value: current_user.id %>
 
     <%= t.label :tasklist%>
@@ -32,5 +34,5 @@
 <%end%>
 <br />
 <br />
-<h4><%="#{@task.name} was originally due on #{@task.real_date}" %></h4>
+<h4><%="#{@task.name} was originally due on #{@task.real_date}!" %></h4>
 

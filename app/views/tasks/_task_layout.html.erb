@@ -2,9 +2,10 @@
   <div class="card-body">
     <h5 class="card-title"><%=@task.name%></h5>
     <h6 class="card-subtitle mb-2 text-muted">ID: <%=@task.id%></h6>
-    <p class="card-text">Group: <%=link_to "#{@task.group.name}"%></p>
-    <p class="card-text">Tasklist: <%=link_to "#{@task.tasklist.title}"%></p>
-    <p class="card-text">Completed: <%=link_to "Update Task", edit_tasklist_task_path(@task.tasklist_id, @task)%></p>
+    <p class="card-text">Group: <%=link_to "#{@task.group.name}", group_path(@task.group_id)%></p>
+    <p class="card-text">Tasklist: <%=link_to "#{@task.tasklist.title}", tasklist_path(@task.tasklist_id)%></p>
+    <p class="card-text">Update Task Status: <%=link_to "Update Task", edit_tasklist_task_path(@task.tasklist_id, @task)%></p>
+    <p class="card-text">Status: <%=@task.done?%></p>
     <p class="card-text">Due: <%= @task.real_date%></p>
 
   </div>

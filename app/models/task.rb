@@ -11,6 +11,7 @@ class Task < ApplicationRecord
 
     # Class Level AR scope method
     scope :this_week, -> {where(["due_date <= ?", 7.days.from_now])}
+    scope :total_complete, -> {where(["completed = ?", true])}
 
     def in_the_future
         future_week = 7.days.from_now
@@ -20,6 +21,15 @@ class Task < ApplicationRecord
         @real_date = self.due_date
         @real_date.strftime("%m/%d/%y")
     end
+
+    def done?
+        if self.completed
+            "Completed"
+        else
+            "Incomplete"
+        end
+    end
+
 
 
         

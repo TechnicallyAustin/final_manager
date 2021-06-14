@@ -20,10 +20,10 @@
             <th scope="row"><%=counter%></th>
             <td><%=link_to "#{task.name}", tasklist_task_path(task.tasklist_id, task)%></td>
             <td><%=task.real_date%></td>
-            <td><%=task.completed%></td>
+            <td><%=task.done?%></td>
             <td><%=link_to "#{task.group.name}", group_path(task.group)%></td>
             <td><%=link_to "#{task.tasklist.title}", tasklist_path(task.tasklist)%></td>
-            <td><%=link_to "Edit", edit_tasklist_task_path(task.tasklist_id, task)%>
+            <td><%=link_to "Edit", edit_tasklist_task_path(task.tasklist_id, task.id)%></td>
         </tr>
             <%=counter += 1%>
         

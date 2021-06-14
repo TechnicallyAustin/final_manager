@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
     def show
         current_user
-       # byebug
+        # VV creates a variable so i can use my table partial. chains on my scope method to only display Tasks due this week.
+        @tasks = current_user.tasks.this_week
     end
 
     def new

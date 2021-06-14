@@ -1,12 +1,6 @@
 <h1><%="#{current_user.full_name}'s -  Final Manager"%></h1>
 
 <h2> Tasks Due This Week </h2>
-<ol>
-<%=current_user.tasks.all.this_week.each do |task|%>
-<li>Task: <h3><%=link_to "#{task.name}", tasklist_task_path(task)%></h3>
-Due_date: <p><%=task.due_date.to_date%></p>
-Completed? <%=task.completed%></li><br />
-<%end%>
-</ol>
 
-<%=render "shared/tasks_table"%>
+
+<%=render partial: "/users/tasks_table"%>

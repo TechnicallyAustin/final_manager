@@ -6,7 +6,8 @@ class TasklistsController < ApplicationController
 
     def show
         current_tasklist
-        @task = Task.new
+        @tasks = current_tasklist.tasks
+
     end
 
     def new
@@ -14,7 +15,6 @@ class TasklistsController < ApplicationController
     end
 
     def create
-        # Creation works with strong params
         @tasklist = Tasklist.new(tasklist_params)
         if @tasklist.valid?
             @tasklist.save
@@ -22,15 +22,21 @@ class TasklistsController < ApplicationController
         else
             render :new
         end
-
-
-
     end
 
     def edit
+        current_tasklist
     end
 
     def update
+        current_tasklist
+        @tasklist.update(tasklist_params)
+        if @tasklist.valid?
+            @tasklist.save
+            redirect_to tasklist_path(@tasklist)
+        else
+            render :edit
+        end
     end
 
     private

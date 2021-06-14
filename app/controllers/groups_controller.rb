@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-
     def index
         @groups = current_user.groups
     end
@@ -9,12 +8,18 @@ class GroupsController < ApplicationController
     end
 
     def edit
-        @group_finder
+        group_finder
     end
 
     def update
         group_finder
-        #@group.update
+        @group.update(group_params)
+        if @group.valid?
+            @group.save
+            redirect_to group_path(@group)
+        else
+            render :edit
+        end
     end
 
     def new
@@ -39,6 +44,4 @@ class GroupsController < ApplicationController
     def group_params
         params.require(:group).permit(:name, :description)
     end
-
-
 end

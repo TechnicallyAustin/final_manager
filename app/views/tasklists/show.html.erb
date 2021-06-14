@@ -4,33 +4,4 @@
 <%=link_to "Edit Tasklist", edit_tasklist_path(@tasklist)%><br />
 <%=link_to "New Task", new_tasklist_task_path(@tasklist.id)%>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Task</th>
-      <th scope="col">Due Date</th>
-      <th scope="col">Completed</th>
-      <th scope="col">Group</th>
-      <th scope="col">Tasklist</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-
-  <tbody>
-        <%counter = 1%>
-        <%@tasklist.tasks.each do |task|%>
-        <tr>
-            <th scope="row"><%=counter%></th>
-            <td><%=link_to "#{task.name}", tasklist_task_path(task.tasklist_id, task)%></td>
-            <td><%=task.due_date%></td>
-            <td><%=task.completed%></td>
-            <td><%=link_to "#{task.group.name}", group_path(task.group)%></td>
-            <td><%=link_to "#{task.tasklist.title}", tasklist_path(task.tasklist)%></td>
-            <td><%=link_to "Edit", edit_tasklist_task_path(task.tasklist_id, task)%>
-        </tr>
-            <%=counter += 1%>
-        
-        <%end%>
-  </tbody>
-</table>
+<%=render partial: "users/tasks_table"%>

@@ -4,6 +4,10 @@ class Tasklist < ApplicationRecord
     has_many :groups, through: :tasks
     belongs_to :user
 # Validations
+    validates :title, presence: true
+    validates :description, presence: true, length: {maximum: 200}
+
+
 
 # Methods
     def add_task(task_name)

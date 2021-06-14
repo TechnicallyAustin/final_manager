@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
     def show
         current_user
-        # VV creates a variable so i can use my table partial. chains on my scope method to only display Tasks due this week.
         @tasks = current_user.tasks.this_week
     end
 
@@ -19,11 +18,9 @@ class UsersController < ApplicationController
           flash[:notice] = "Successfully created Account!"
           redirect_to root_path
         else
-          # If user fails model validation - probably a bad password or duplicate email:
           flash.now.alert = "Error creating account. Please check your details and try again."
           render :new
         end
-      
     end
 
     def edit
@@ -31,7 +28,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        # look into update syntax
+        # might allow users to edit their profiles and delete them later.
     end
 
     private

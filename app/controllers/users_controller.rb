@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
     def show
         current_user
+       # byebug
     end
 
     def new

@@ -8,8 +8,8 @@
     <%= t.label :name%>
     <%= t.text_field :name%>
 
-    <%= t.label :due_date%>
-    <%= t.text_field :due_date%>
+    <%= t.label :due_date %> <em>(DD/MM/YYYY):</em>
+    <%= t.date_field :due_date, placeholder: "DD/MM/YYYY"%>
 
 
     <%= t.label :completed%>

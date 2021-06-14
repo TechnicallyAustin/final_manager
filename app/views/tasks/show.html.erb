@@ -1,5 +1,5 @@
 <h1>Task| <%=@task.name%></h1>
-<h3>Due| <%=@task.due_date%></h3>
+<h3>Due| <%=@task.due_date.to_date%></h3>
 <h3>Completed?| <%=@task.completed%></h3>
 <h3>Group| <%=@task.group.name%></h3>
 <h3>Tasklist| <%=@task.tasklist.title%></h3>

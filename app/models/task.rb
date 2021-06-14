@@ -1,7 +1,8 @@
+
 class Task < ApplicationRecord
     belongs_to :user
     belongs_to :tasklist
-    belongs_to :group
+    belongs_to :group, optional: true 
     accepts_nested_attributes_for :group
 
     validates :name, presence: true
@@ -14,6 +15,12 @@ class Task < ApplicationRecord
     def in_the_future
         future_week = 7.days.from_now
     end
+
+    def real_date
+        @real_date = self.due_date
+        @real_date.strftime("%m/%d/%y")
+    end
+
 
         
 

@@ -1,30 +1,36 @@
 <h1><%="Edit your Task, #{@task.name}"%> </h1>
-<%=form_for tasks_path(@task) do |t|%>
+
+<h1> Create a new Task </h1>
+<%=form_for @task, url: edit_tasklist_task_path do |t|%>
 <%= t.hidden_field :user_id, value: current_user.id %>
 
     <%= t.label :tasklist%>
-    <%=t.collection_select :tasklist_id, Tasklist.order(:id), :id, :title, include_blank: true%>
+    <%=t.collection_select :tasklist_id, Tasklist.order(:id), :id, :title, value: @task.tasklist.title%>
 
     <%= t.label :name%>
-    <%= t.text_field :name, placeholder: @task.name%>
+    <%= t.text_field :name, value: @task.name%>
 
     <%= t.label :due_date%>
-    <%= t.text_field :due_date, placeholder: @task.due_date%>
+    <%= t.date_field :due_date, value: @task.due_date%>
 
 
     <%= t.label :completed%>
+
     <%= t.check_box :completed%><br /><br />
 
 
 
         <%=t.fields_for :group_attributes do |group_form|%>
             <%=group_form.label :group %>
-            <%=group_form.text_field :name, placeholder: @task.group.name%>
+            <%=group_form.text_field :name, value: @task.group.name%>
 
             <%=group_form.label :description%>
-            <%=group_form.text_field :description, placeholder: @task.group.description%>
+            <%=group_form.text_field :description, value: @task.group.description%>
         <%end%>
 
-    <%=t.submit "Update Task"%>
+    <%=t.submit "Submit Task"%>
 <%end%>
+<br />
+<br />
+<h4><%="#{@task.name} was originally due on #{@task.real_date}" %></h4>
 

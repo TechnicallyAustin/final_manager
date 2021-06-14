@@ -33,9 +33,10 @@ class TasksController < ApplicationController
     end
 
     def update
-        current_task
+        @task = Task.find_by(id: params[:task_id])
+        byebug
         @task.update(task_params)
-
+    
         if @task.valid?
             @task.save
             redirect_to task_path(@task)

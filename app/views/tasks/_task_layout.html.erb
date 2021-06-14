@@ -5,7 +5,7 @@
     <p class="card-text">Group: <%=link_to "#{@task.group.name}"%></p>
     <p class="card-text">Tasklist: <%=link_to "#{@task.tasklist.title}"%></p>
     <p class="card-text">Completed: <%=link_to "Update Task", edit_tasklist_task_path(@task.tasklist_id, @task)%></p>
-    <p class="card-text">Due: <%= @task.due_date.to_date%></p>
+    <p class="card-text">Due: <%= @task.real_date%></p>
 
   </div>
 </div>

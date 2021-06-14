@@ -3,52 +3,38 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
 
   # User Routes
-  # user does not need to have tracklists nested, I can just authenticate the routes
-
-    resources :users, only: [:index, :show, :edit, :update] do 
-      #resources :tasklists, only: [:index]
-    end
-    #get 'profile', to: 'users#show'
+    resources :users, only: [:index, :show, :edit, :update] 
 
   # Task Routes
     resources :tasks, only: [:index]
-    #get 'tasks/new', to: 'tasks#new'
-    #post "tasks/new", to: 'tasks#create'
+
   # Group Routes
     resources :groups, only: [:show, :index, :edit, :update]
 
   # Tasklists Routes
-  ### Considering nesding tasks within tasklists for easier navigation.
     resources :tasklists, only: [:index, :new, :show, :create, :edit, :update] do
       resources :tasks, only: [:show, :edit, :update, :new, :create]
     end
 
-    get 'tasklists/new', to: 'tasklists#new'
-    post 'tasklists/:id/edit', to: 'tasklists#edit'
-    get 'tasklists/:tasklist_id/tasks/new', to: 'tasks#new'
-    #post 'tasklists/:tasklist_id/tasks/new', to: "tasks#create"
-    get 'tasklists/:tasklist_id/tasks/:task_id', to: 'tasks#show'
-    post '/tasks', to: "tasks#create"
-    post 'tasklists/:tasklist_id/:tasks/:task_id/edit', to: 'tasks#create'
-
-
-  # Root Page
-    root to: 'sessions#welcome'
-
-
-	devise_scope :user do
-    get 'login', to: 'devise/sessions#new'
-    get 'sign_up', to: 'devise/registrations#new'
-    delete '/logout', to: 'sessions#destroy'
-
-
-
-  end
+  # Redirects
+    # Tasklists
+    get 'tasklists/new', to: 'tasklists#new' # New Tasklist
+    get 'tasklists/:tasklist_id/tasks/new', to: 'tasks#new' # New Task Within a Tasklist
+    get 'tasklists/:tasklist_id/tasks/:task_id', to: 'tasks#show' # Single Task on a Tasklist
+    post 'tasklists/:id/edit', to: 'tasklists#edit' # Edit a Single Tasklist
+    patch 'tasklists/:tasklist_id/tasks/:task_id/edit', to: 'tasks#update' # renders the nested tasklist taks edit form
+    get 'tasklists/:tasklist_id/tasks/:task_id/edit', to: 'tasks#edit' # posts the tasklist's task and processes the updates
   
+    # Tasks
+      post '/tasks', to: "tasks#create"
 
+    # Root Page
+      root to: 'sessions#welcome'
 
-
-
-
-
+    # Devise Routes
+  	  devise_scope :user do
+        get 'login', to: 'devise/sessions#new'
+        get 'sign_up', to: 'devise/registrations#new'
+        delete '/logout', to: 'sessions#destroy'
+      end
 end

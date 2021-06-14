@@ -7,4 +7,6 @@ class Task < ApplicationRecord
     validates :name, presence: true
     validates :due_date, presence: true#, Make sure the due date is in the future.
 
+    scope :upcoming_due_date, -> {where(due_date: 7.days.from_now.to_date)}
+
 end

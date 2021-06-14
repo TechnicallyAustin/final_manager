@@ -1,4 +1,3 @@
-
 class SessionsController < ApplicationController
     before_action :authenticate_user!, execpt: [:welcome, :new, :destroy]
     def new

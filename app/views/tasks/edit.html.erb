@@ -13,7 +13,7 @@
     <%= t.text_field :name, value: @task.name%>
 
     <%= t.label :due_date%>
-    <%= t.date_field :due_date, value: @task.due_date%>
+    <%= t.date_field :due_date, default: @task.due_date%>
 
 
     <%= t.label :completed%>

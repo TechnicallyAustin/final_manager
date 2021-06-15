@@ -1,4 +1,3 @@
-
 class Task < ApplicationRecord
     belongs_to :user
     belongs_to :tasklist
@@ -29,10 +28,4 @@ class Task < ApplicationRecord
             "Incomplete"
         end
     end
-
-
-
-        
-
-
 end

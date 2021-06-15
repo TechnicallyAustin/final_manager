@@ -1,7 +1,7 @@
 <h1> Tasklist Hub </h1>
 <%=link_to "Create a New Tasklist", new_tasklist_path(@tasklist)%><br />
 
-<%=current_user.tasklists.each do |tasklist|%>
+<%=current_user.tasklists.each do |tasklist|%>%>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h3 class="card-title"><%=link_to "#{tasklist.title}", tasklist_path(tasklist)%></h3>

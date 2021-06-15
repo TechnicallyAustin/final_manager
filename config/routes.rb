@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Devise Authentication Routes
-    devise_for :users, controllers: {omniauth_callbacks: 'omniauth'}
+    devise_for :users, controllers: {omniauth_callbacks: 'users/omniauthcallbacks'}
 
   # User Routes
     resources :users, only: [:index, :show, :edit, :update] 

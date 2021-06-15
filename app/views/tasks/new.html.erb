@@ -3,7 +3,7 @@
 <%= t.hidden_field :user_id, value: current_user.id %>
 
     <%= t.label :tasklist%>
-    <%=t.collection_select :tasklist_id, Tasklist.order(:id), :id, :title, include_blank: true%>
+    <%=t.collection_select :tasklist_id, current_user.tasklists.order(:id), :id, :title, include_blank: true%>
 
     <%= t.label :name%>
     <%= t.text_field :name%>

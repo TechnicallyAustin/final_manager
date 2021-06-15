@@ -8,7 +8,7 @@ class User < ApplicationRecord
     validates :name, presence: true  
     validates :email, presence: true, uniqueness: true 
     validates :password, presence: true 
-    validates :password_confirmation, presence: true 
+    validates :password_confirmation, presence: true unless 
 # Associations
   has_many :tasklists
   has_many :tasks, through: :tasklists
@@ -21,16 +21,17 @@ class User < ApplicationRecord
     p "#{self.name} #{self.lname}"
   end
 
-  
   def self.from_google(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
-
-    # Uncomment the section below if you want users to be created if they don't exist
+  
+    # users are created if they don't exist
       unless user
         user = User.create(name: data['name'],
             email: data['email'],
-            password: Devise.friendly_token[0,20]
+            #password: Devise.friendly_token[0,20],
+            # Added SecureRandom to bypass password confirmation validation for my User model.
+            password: SecureRandom
           )
       end
     user

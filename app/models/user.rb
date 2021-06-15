@@ -5,8 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 # Validaitons
-    validates :name, presence: true 
-    validates :lname, presence: true 
+    validates :name, presence: true  
     validates :email, presence: true, uniqueness: true 
     validates :password, presence: true 
     validates :password_confirmation, presence: true 
@@ -22,13 +21,19 @@ class User < ApplicationRecord
     p "#{self.name} #{self.lname}"
   end
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-    end
+  
+  def self.from_google(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+      unless user
+        user = User.create(name: data['name'],
+            email: data['email'],
+            password: Devise.friendly_token[0,20]
+          )
+      end
+    user
   end
 
   

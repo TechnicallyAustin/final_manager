@@ -277,7 +277,7 @@ Devise.setup do |config|
   client_secret = Rails.application.secrets["GOOGLE_APP_SECRET"]
   # Configure Google omniauth with proper scope
   config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
-  Rails.application.credentials.dig(:google, :google_client_secret), scope: "userinfo.email,userinfo.profile"
+  Rails.application.credentials.dig(:google, :google_client_secret), {}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

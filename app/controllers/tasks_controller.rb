@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-    # before action authenticate user
-    def index
+    before_action :authenticate_user!
+        def index
         @tasks = current_user.tasks.all
     end
 

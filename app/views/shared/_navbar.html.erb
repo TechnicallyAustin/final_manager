@@ -23,6 +23,10 @@
           </li>
 
           <li class="nav-item">
+            <%=link_to "Groups", groups_path, class: 'nav-link'%>
+          </li>
+
+          <li class="nav-item">
             <%=link_to "logout", destroy_user_session_path, method: :delete, class:'nav-link'%> 
           </li>
 

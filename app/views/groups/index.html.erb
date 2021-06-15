@@ -1,0 +1,10 @@
+<%=current_user.groups.each do |group|%>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title"><%=link_to "#{group.name}", group_path(group)%></h3>
+    <h6 class="card-subtitle mb-2 text-muted"><%=group.description%></h6>
+    <p class="card-text">Number of Tasks: <%=group.tasks.count%></p>
+  </div>
+</div>
+<%end%>
+<br>
